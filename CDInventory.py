@@ -7,7 +7,7 @@
 # DKlos, 2020-Mar-02, Refactored code, grading.
 # Kenny Lu, 2020-Mar-06, Added Structured error handling.
 # Kenny Lu, 2020-Mar-08, Added pickling for read/write.
-# Kenny Lu, 2020-Mar-09, Updated docstrings. 
+# Kenny Lu, 2020-Mar-09, Updated docstrings and ID uniqueness check. 
 #------------------------------------------#
 
 import pickle
@@ -190,6 +190,11 @@ class IO:
                 cd_id = int(str_cd_id) 
             except ValueError as e:
                 print("Oops! Please enter integer only. Try again or type \'exit\' to return to the menu.")  
+                continue
+            # Extract list of dicts to be a single dict and check ID input uniqueness
+            extlstTbl = dict((i['ID'], i['Title']) for i in lstTbl)
+            if cd_id in extlstTbl: 
+                print("Duplicated ID: {} found, please use another ID or type \'exit\' to return to the menu".format(cd_id))
                 continue
             cd_title = input('What is the CD\'s title? ').strip()
             cd_artist = input('What is the Artist\'s name? ').strip()
