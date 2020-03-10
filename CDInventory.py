@@ -194,7 +194,7 @@ class IO:
             # Extract list of dicts to be a single dict and check ID input uniqueness
             extlstTbl = dict((i['ID'], i['Title']) for i in lstTbl)
             if cd_id in extlstTbl: 
-                print("Duplicated ID: {} found, please use another ID or type \'exit\' to return to the menu".format(cd_id))
+                print("Duplicate ID: {} found, please use another ID or type \'exit\' to return to the menu".format(cd_id))
                 continue
             cd_title = input('What is the CD\'s title? ').strip()
             cd_artist = input('What is the Artist\'s name? ').strip()
